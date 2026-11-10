@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NeuroSales — GRANARWOOD</title><link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="login" class="login-wrap">
+  <form id="loginForm" class="login-card"><div class="brand">GRANAR<span>WOOD</span></div>
+    <h1>NeuroSales</h1><p>Система работы с клиентскими заявками</p>
+    <label>Пароль администратора<input id="password" type="password" minlength="8" required placeholder="Введите пароль"></label>
+    <button>Войти</button><small id="loginError"></small>
+  </form>
+</div>
+<div id="app" class="shell hidden">
+  <aside><div class="brand">GRANAR<span>WOOD</span></div><p class="muted">NEURO SALES</p>
+    <nav><a class="active">Обзор и заявки</a></nav><button id="logout" class="ghost">Выйти</button>
+    <div class="side-note">AI-помощник продаж<br><b>От заявки до сделки</b></div>
+  </aside>
+  <main><header><div><p class="eyebrow">ПАНЕЛЬ УПРАВЛЕНИЯ</p><h1>Клиентские заявки</h1></div><button id="addToggle">＋ Новая заявка</button></header>
+    <section class="stats">
+      <article><span>Всего заявок</span><b id="total">0</b></article>
+      <article><span>Новые</span><b id="new">0</b></article>
+      <article><span>В работе</span><b id="in_work">0</b></article>
+      <article><span>Успешные сделки</span><b id="won">0</b></article>
+    </section>
+    <section id="leadFormWrap" class="panel hidden"><h2>Новая заявка</h2>
+      <form id="leadForm" class="form-grid">
+        <label>Имя клиента<input name="name" required minlength="2" placeholder="Иван"></label>
+        <label>Телефон<input name="phone" required minlength="5" placeholder="+7 900 000-00-00"></label>
+        <label>Продукция<input name="product" required placeholder="Доска тарная"></label>
+        <label>Объём<input name="volume" placeholder="Например, 10 м³"></label>
+        <label>Источник<select name="source"><option>Сайт</option><option>Телефон</option><option>Мессенджер</option><option>Рекомендация</option></select></label>
+        <label class="wide">Комментарий<textarea name="comment" rows="2" placeholder="Размеры, сроки, пожелания"></textarea></label>
+        <div class="wide actions"><button>Сохранить заявку</button><button type="button" id="cancelAdd" class="secondary">Отмена</button></div>
+      </form>
+    </section>
+    <section class="panel"><div class="panel-head"><div><h2>Воронка продаж</h2><p class="muted">Управляйте заявками и готовьте ответы клиентам</p></div>
+      <input id="search" class="search" placeholder="Поиск по имени, телефону, товару…"></div>
+      <div class="table-wrap"><table><thead><tr><th>Клиент</th><th>Запрос</th><th>Источник</th><th>Статус</th><th>Действия</th></tr></thead><tbody id="leads"></tbody></table></div>
+      <p id="empty" class="empty hidden">Заявок пока нет. Добавьте первую заявку.</p>
+    </section>
+    <section id="aiPanel" class="panel hidden"><div class="panel-head"><div><p class="eyebrow">AI SALES ASSISTANT</p><h2>Ответ клиенту</h2></div><button id="closeAI" class="secondary">Закрыть</button></div>
+      <label>Тон сообщения<select id="tone"><option>Деловой</option><option>Дружелюбный</option><option>Краткий</option></select></label>
+      <textarea id="reply" rows="6" readonly placeholder="Здесь появится подготовленный ответ"></textarea>
+      <div class="actions"><button id="generate">Сгенерировать ответ</button><button id="copy" class="secondary">Копировать</button></div>
+    </section>
+    <footer>NeuroSales v1.0 · GRANARWOOD · Данные хранятся в локальной базе SQLite</footer>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body></html>

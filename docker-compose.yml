@@ -1,0 +1,12 @@
+services:
+  neurosales:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      APP_PASSWORD: ${APP_PASSWORD:-change-this-password}
+      TOKEN_SECRET: ${TOKEN_SECRET:-change-this-token-secret}
+      DATABASE_PATH: /app/data/neurosales.db
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
